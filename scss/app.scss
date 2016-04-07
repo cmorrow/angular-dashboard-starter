@@ -1,0 +1,38 @@
+body {
+	background-color: #fff;
+}
+
+table {
+  thead, tbody, tr, td, th { display: block; }
+  thead {
+    padding-right:14px; /* offset scrollbar */
+    th {
+      height: 35px;
+      cursor: pointer;
+    }
+  }
+  tbody {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+  }
+
+  tbody td, thead th {
+      width: 25%;
+      float: left;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #efefef;
+  }
+}
+
+// Charts
+.arc-label {
+  fill:#fff;
+}

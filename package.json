@@ -1,0 +1,16 @@
+{
+  "name": "d3-piechart",
+  "version": "1.0.0",
+  "description": "Sample D3 Angular Project",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Morrow",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.11.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0"
+  }
+}

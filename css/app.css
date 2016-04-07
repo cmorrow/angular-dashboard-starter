@@ -1,0 +1,32 @@
+body {
+  background-color: #fff; }
+
+table thead, table tbody, table tr, table td, table th {
+  display: block; }
+
+table thead {
+  padding-right: 14px;
+  /* offset scrollbar */ }
+  table thead th {
+    height: 35px;
+    cursor: pointer; }
+
+table tbody {
+  max-height: 300px;
+  overflow-y: auto; }
+
+table tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both; }
+
+table tbody td, table thead th {
+  width: 25%;
+  float: left; }
+
+table tr:nth-child(even) {
+  background-color: #efefef; }
+
+.arc-label {
+  fill: #fff; }

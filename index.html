@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D3 Sample</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body ng-app="app">
+    <div class="container" ng-controller="dashCtrl">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Employees</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 pull-right text-right">
+                <button>Add Employee</button>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <th ng-click="sortCol('name')">Name <i class="fa fa-sort" ng-show="!isSorted('name')"></i><span ng-show="isSorted('name')"><i class="fa fa-sort-asc" ng-hide="sortReverse"></i><i class="fa fa-sort-desc" ng-show="sortReverse"></i></span></th>
+                <th ng-click="sortCol('jobTitle')">Job Title <i class="fa fa-sort" ng-show="!isSorted('jobTitle')"></i><span ng-show="isSorted('jobTitle')"><i class="fa fa-sort-asc" ng-hide="sortReverse"></i><i class="fa fa-sort-desc" ng-show="sortReverse"></i></span></th>
+                <th ng-click="sortCol('tenure')">Tenure <i class="fa fa-sort" ng-show="!isSorted('tenure')"></i><span ng-show="isSorted('tenure')"><i class="fa fa-sort-asc" ng-hide="sortReverse"></i><i class="fa fa-sort-desc" ng-show="sortReverse"></i></span></th>
+                <th ng-click="sortCol('gender')">Gender <i class="fa fa-sort" ng-show="!isSorted('gender')"></i><span ng-show="isSorted('gender')"><i class="fa fa-sort-asc" ng-hide="sortReverse"></i><i class="fa fa-sort-desc" ng-show="sortReverse"></i></span></th>
+            </thead>
+            <tr ng-repeat="employee in employees | orderBy:colSorted:sortReverse">
+                <td>{{employee.name}}</td>
+                <td>{{employee.jobTitle}}</td>
+                <td>{{employee.tenure}}</td>
+                <td>{{employee.gender}}</td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-sm-6">
+            	<h5>D3 JS Example</h5>
+            	<div pie-chart chart-data="pieData"></div>
+            </div>
+            <div class="col-sm-6">
+            	<h5>Highchart Example</h5>
+            	<highchart id="barChart" config="barChartConfig"></highchart>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dependencies -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.3/highcharts.js"></script>
+    <script type="text/javascript" src="js/lib/highcharts-ng.min.js"></script>
+
+    <!-- App Scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/views/dashboard/dashboard.js"></script>
+    <script type="text/javascript" src="js/components/pie-chart/pie-chart.js"></script>
+    <script type="text/javascript" src="js/services/employee-service.js"></script>
+</body>
+
+</html>

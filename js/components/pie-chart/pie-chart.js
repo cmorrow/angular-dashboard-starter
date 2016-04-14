@@ -66,6 +66,11 @@
             function render() {
                 var data = scope.chartData;
 
+                // get sum of all data for getting percentages
+                var dataSum = d3.sum(data, function(d) { 
+                    return d.value; 
+                });
+
                 // redraw chart
                 arcs = arcs.data(pie(data)); // compute the new angles
                 arcs.transition().duration(750).attrTween("d", arcTween); // redraw the arcs
@@ -80,7 +85,8 @@
                     return 'translate(' + Number(c[0]) + ', ' + Number(c[1]) + ')';
                 })
                 .text(function (d, i) {
-                    return Math.round(d.value);
+                    var percentVal = (data[i].value/dataSum)*100;
+                    return Math.round(percentVal) + '%';
                 });
 
                 arcOuterLabel
@@ -103,6 +109,11 @@
                 var height = chartBounds;
                 radius = calcRadius(chartBounds) - chartMargin;
                 labelRadius = radius + 5;
+
+                // get sum of all data for getting percentages
+                var dataSum = d3.sum(data, function(d) { 
+                    return d.value; 
+                });
 
                 var leftMargin = Number((width / 2) - (chartBounds / 2));
                 var topMargin = Number((height / 2) - (chartBounds / 2));
@@ -161,7 +172,8 @@
                     .attr("text-anchor", "middle")
                     .attr('fill', '#fff')
                     .text(function (d, i) {
-                        return Math.round(data[i].value) + '%';
+                        var percentVal = (data[i].value/dataSum)*100;
+                        return Math.round(percentVal) + '%';
                     });
 
                 // outer labels
